@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { NextPage } from "next";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import HomePage from "./Components/Home";
 import Search from "./Components/Search";
@@ -38,19 +39,24 @@ const Home: NextPage = () => {
   };
 
   return (
-    <main>
-      <Search
-        handleSubmitSearch={handleSubmitSearch}
-        setInputSearch={setInputSearch}
-      />
-      {error ? (
-        <div className="error">
-          <h1>Error</h1>
-        </div>
-      ) : (
-        <HomePage homeArticles={homeArticles} />
-      )}
-    </main>
+    <>
+      <Head>
+        <title>Hector Tecnical Project</title>
+      </Head>
+      <main>
+        <Search
+          handleSubmitSearch={handleSubmitSearch}
+          setInputSearch={setInputSearch}
+        />
+        {error ? (
+          <div className="error">
+            <h1>Error</h1>
+          </div>
+        ) : (
+          <HomePage homeArticles={homeArticles} />
+        )}
+      </main>
+    </>
   );
 };
 
